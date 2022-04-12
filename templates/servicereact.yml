@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    run: {{ .Values.name }}
+  name: {{ .Values.name }}
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app.kubernetes.io/managed-by: Helm
+    run: {{ .Values.name }}
+  type: NodePort
+status:
+  loadBalancer: {}
