@@ -2,9 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: {{ .Values.name }}
-  lables:
-    app.kubernetes.io/managed-by: Helm
-    run: {{ .Values.name }}
 spec:
   ports:
     - protocol: TCP
@@ -12,5 +9,6 @@ spec:
       targetPort: 80
   type: ClusterIP
   selector:
-    app.kubernetes.io/managed-by: Helm
-    run: {{ .Values.name }}
+    labels:
+    app: {{ .Values.name }}
+    
