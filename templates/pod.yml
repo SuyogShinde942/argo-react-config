@@ -10,6 +10,9 @@ spec:
   - image: {{ .Values.imagename }}
     name: {{ .Values.name }}
     resources: {}
+    ports:
+      - containerPort: 80
+        protocol: TCP
+    imagePullPolicy: Always
   dnsPolicy: ClusterFirst
   restartPolicy: Always
-status: {}
